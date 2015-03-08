@@ -1,0 +1,67 @@
+<div id="wrapper" ng-class="{'toggled':toggleIt}">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">Your Week in review</a>
+      </li>
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div ng-repeat="day in week track by $index" class="panel panel-default">
+          <div class="panel-heading" role="tab">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+                {{ daysOfWeek[$index] }} <span class="pull-right">{{ day.length || 0 }}</span>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <p ng-repeat="task in day">
+                {{ task.title }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <a ng-click="toggle()" class="btn btn-primary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        <div class="page-header">
+          <h1>Happy <b id="weekDay">{{ dayOfWeek }}</b> <small>, You!</small></h1>
+        </div>
+        <!-- User will enter 3 goals for the day -->
+        <div class="col-sm-4">
+          <h2>Today will be successful if...</h2>
+        </div>
+        <div class="col-sm-8">
+          <form ng-submit="submitTodo()">
+            <div class="form-group">
+              <input class="form-control" ng-model="newTask.title" placeholder="Add a task here" autofocus>
+            </div>
+          </form>
+
+          <table class="table table-hover">
+            <tbody>
+              <tr ng-repeat="task in today">
+                <td>
+                  <input type="text" class="form-control" ng-model="task.title" todo-escape="submitTodo({{$index}})">
+                </td>
+                <td class="text-center">
+                  <button apply-func="updateStatus({{$index}})" type="button" class="btn" ng-class="{'btn-default': !task.completed, 'btn-success': task.completed}"><i class="fa fa-check"></i></button>                  
+                </td>
+                <td class="text-center">
+                  <button apply-func="remove({{$index}})" type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
