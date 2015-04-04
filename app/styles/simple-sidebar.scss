@@ -6,6 +6,43 @@
 
 /* Toggle Styles */
 
+body {
+    background: #65c3c1;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2,h3,h4{
+    /*color: #2d4052;*/
+}
+
+.tasks {
+    padding-bottom: 20px;
+}
+
+.task {
+    border-bottom: 1px solid #fff;
+}
+
+.list-group-item{
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+}
+
+.form-control {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+}
+
+.form-control:focus {
+    border: none;
+    border-color: none;
+}
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -26,7 +63,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #2d4052;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

@@ -25,14 +25,20 @@
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         $httpProvider.defaults.withCredentials = true;
 
-        $urlRouterProvider.otherwise('/main');
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
-          .state('main', {
-            url: '/main',
-            controller: 'MainCtrl',
-            templateUrl: 'views/main.html'
-          });
-      }
+          .state('layout', {
+            url: '/',
+            views: {
+              '@' : {
+                templateUrl: 'views/layout.tpl.html',
+                controller: 'MainCtrl'
+              },
+              'week@layout' : { templateUrl: 'views/week.tpl.html'},
+              'tasks@layout' : { templateUrl: 'views/tasks.tpl.html'}
+            },
+          })
+        }
     ]);
 })();
